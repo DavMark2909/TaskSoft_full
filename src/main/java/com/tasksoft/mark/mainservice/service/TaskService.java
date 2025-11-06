@@ -2,20 +2,16 @@ package com.tasksoft.mark.mainservice.service;
 
 import com.tasksoft.mark.mainservice.entity.Group;
 import com.tasksoft.mark.mainservice.entity.enums.TaskType;
+import com.tasksoft.mark.mainservice.events.GroupTaskCreationEvent;
+import com.tasksoft.mark.mainservice.events.SingleTaskCreationEvent;
 import com.tasksoft.mark.mainservice.exception.TaskNotFoundException;
-import com.tasksoft.mark.mainservice.exception.UserNotFoundException;
 import com.tasksoft.mark.mainservice.dto.TaskCreateDto;
 import com.tasksoft.mark.mainservice.entity.Task;
 import com.tasksoft.mark.mainservice.entity.User;
-import com.tasksoft.mark.mainservice.entity.enums.NotificationType;
-import com.tasksoft.mark.mainservice.repository.GroupRepository;
 import com.tasksoft.mark.mainservice.repository.TaskRepository;
-import com.tasksoft.mark.mainservice.repository.UserRepository;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -54,7 +50,14 @@ public class TaskService {
                 break;
         }
         Task savedTask = taskRepository.save(task);
-        eventPublisher.publishEvent(savedTask);
+        switch (dto.type()){
+            case GROUP:
+                eventPublisher.publishEvent(new GroupTaskCreationEvent(savedTask));
+                break;
+            case SINGLE:
+                eventPublisher.publishEvent(new SingleTaskCreationEvent(savedTask));
+                break;
+        }
         return savedTask;
     }
 
