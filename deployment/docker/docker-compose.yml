@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  main-service:
+    depends_on:
+      - tasksoft-postgres
+    image: "main-service"
+    container_name: "main-service"
+    ports:
+      - 9001:9001
+    environment:
+      - BPL_JVM_THREAD_COUNT=50
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://tasksoft-postgres:5432/tasksoft_db
+#      - SPRING_SQL_INIT_MODE=always
+
+  tasksoft-postgres:
+    image: "postgres:14.12"
+    container_name: "tasksoft-postgres"
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=psw
+      - POSTGRES_DB=tasksoft_db
+    volumes:
+      - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - tasksoft-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  tasksoft-postgres-data:
