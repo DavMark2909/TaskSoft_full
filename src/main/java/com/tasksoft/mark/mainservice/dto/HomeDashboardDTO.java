@@ -1,6 +1,6 @@
 package com.tasksoft.mark.mainservice.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public record HomeDashboardDTO(
@@ -17,8 +17,9 @@ public record HomeDashboardDTO(
     public record TaskSummary(
             Long id,
             String title,
-            String priority, // HIGH, MEDIUM, LOW
-            LocalDate dueDate
+            String description,
+            String group,
+            LocalDateTime dueDate
     ) {}
 }
 
