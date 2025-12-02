@@ -39,6 +39,7 @@ public class TaskService {
         task.setTaskType(TaskType.CREATED);
         task.setName(dto.name());
         task.setDescription(dto.description());
+        task.setDueDate(dto.dueDate());
         switch (dto.type()){
             case GROUP:
                 Group group = groupService.getGroup(dto.assigneeId());
