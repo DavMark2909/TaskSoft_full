@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: auth-server-tasksoft
+  datasource:
+    url: jdbc:mysql://localhost:3310/security
+    username: root
+    password: psw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
