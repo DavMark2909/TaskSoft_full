@@ -1,6 +1,7 @@
 package com.tasksoft.mark.mainservice.service;
 
 import com.tasksoft.mark.mainservice.dto.GroupCreateDto;
+import com.tasksoft.mark.mainservice.dto.GroupDto;
 import com.tasksoft.mark.mainservice.entity.Group;
 import com.tasksoft.mark.mainservice.entity.User;
 import com.tasksoft.mark.mainservice.exception.GroupNotFoundException;
@@ -62,7 +63,8 @@ public class GroupService {
         groupRepository.deleteById(groupId);
     }
 
-    public List<Group> getAllGroups() {
-        return groupRepository.findAll();
+    public List<GroupDto> getAllGroups() {
+        return groupRepository.findAll().stream()
+                .map(group -> new GroupDto(group.getId(), group.getName())).toList();
     }
 }
