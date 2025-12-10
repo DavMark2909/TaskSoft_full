@@ -1,0 +1,207 @@
+<!--<div th:if="${param.registered}">-->
+<!--    <p class="alert alert-success">Registration successful! Please login.</p>-->
+<!--</div>-->
+
+<!--<form th:action="@{/perform_login}" method="post">-->
+<!--    <input type="text" name="username" placeholder="Username"/>-->
+<!--    <input type="password" name="password" placeholder="Password"/>-->
+<!--    <button type="submit">Sign In</button>-->
+<!--</form>-->
+
+<!--<p>Don't have an account? <a href="/register">Sign Up</a></p>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskSoft Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET & CORE SETUP (Same as Register) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        /* CARD CONTAINER */
+        .login-container {
+            background: rgba(255, 255, 255, 0.05); /* Glass effect */
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* HEADER SECTION */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #bfa2db; /* Light Purple */
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header h2 {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ALERTS (Success/Error Messages) */
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .alert-success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+        }
+
+        .alert-error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+        }
+
+        /* FORM STYLING */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #4a4a4a;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        input:focus {
+            border-color: #8e44ad;
+            box-shadow: 0 0 8px rgba(142, 68, 173, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* BUTTON STYLING */
+        button {
+            margin-top: 10px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #8e44ad, #c0392b);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* FOOTER LINKS */
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .footer a {
+            color: #bfa2db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="header">
+        <h1>TaskSoft</h1>
+        <h2>Login</h2>
+    </div>
+
+    <div th:if="${param.registered}">
+        <p class="alert alert-success">Registration successful! Please login.</p>
+    </div>
+
+    <div th:if="${param.error}">
+        <p class="alert alert-error">Invalid username or password.</p>
+    </div>
+
+    <form th:action="@{/perform_login}" method="post">
+
+        <div class="input-group">
+            <input type="text" name="username" placeholder="Username" required />
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" placeholder="Password" required />
+        </div>
+
+        <button type="submit">Sign In</button>
+    </form>
+
+    <div class="footer">
+        <p>Don't have an account? <a href="/register">Sign Up</a></p>
+    </div>
+</div>
+
+</body>
+</html>
