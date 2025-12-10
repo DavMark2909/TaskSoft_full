@@ -10,11 +10,30 @@ public class SecurityUtils {
         return (Jwt) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    public String getCurrentUserId() {
-        return getPrincipal().getClaimAsString("userId");
+    public Long getCurrentUserId() {
+        Object userId = getPrincipal().getClaims().get("userId");
+        if (userId == null) {
+            throw new RuntimeException("Token is missing 'userId' claim");
+        }
+
+        if (userId instanceof Number number) {
+            return number.longValue();
+        }
+
+        if (userId instanceof String string) {
+            return Long.parseLong(string);
+        }
+
+        throw new RuntimeException("Invalid type for 'userId' claim: " + userId.getClass());
     }
 
     public String getCurrentUserName() {
         return getPrincipal().getClaimAsString("username");
     }
+
+    public String getCurrentUserRole(){
+        return getPrincipal().getClaimAsString("role");
+    }
+
+
 }
