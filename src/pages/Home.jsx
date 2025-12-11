@@ -67,48 +67,36 @@ function Home() {
     ]
 };
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch('/api/home');
-
-    //             if (response.status === 401) {
-    //                 console.log("Session expired or invalid. Redirecting to login...");
-                    
-    //                 window.location.href = "http://localhost:9000/oauth2/authorization/gateway";
-    //                 return; 
-    //             }
-
-    //             if (!response.ok) {
-    //                 throw new Error(`HTTP error! status: ${response.status}`);
-    //             }
-
-    //             const result = await response.json();
-    //             setData(result);
-    //             // set all groups to ne expanded by default
-    //             // initializeGroups(result.ongoingTasks);
-                
-    //         } catch (error) {
-    //             console.error("Error fetching data:", error);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, []);
-
     useEffect(() => {
         const fetchData = async () => {
-            setTimeout(() => {
-                console.log("Using Mock Data");
-                setData(DUMMY_DATA);
+            try {
+                const response = await fetch('/api/home');
+
+                if (response.status === 401) {
+                    console.log("Session expired or invalid. Redirecting to login...");
+                    
+                    window.location.href = "http://localhost:9000/oauth2/authorization/gateway";
+                    return; 
+                }
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log(result)
+                setData(result);
+                
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
                 setLoading(false);
-            }, 800);
+            }
         };
 
         fetchData();
     }, []);
+
     
     const getGroupedTasks = () => {
         if (!data || !data.ongoingTasks) return {};
