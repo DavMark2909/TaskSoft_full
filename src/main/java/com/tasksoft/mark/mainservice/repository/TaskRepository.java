@@ -19,7 +19,9 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findByAssigneeGroupIdInAndTaskTypeOrderByAssigneeGroupNameAsc(Collection<Long> groupIds, TaskType type);
 
-    @Query("SELECT t FROM Task t WHERE " +
+    List<Task> findByAssigneeGroupIdAndTaskType(Long groupId, TaskType type);
+
+    @Query("SELECT COALESCE(COUNT(t), 0) FROM Task t WHERE " +
             "(t.assigneeUser.id = :userId OR t.assigneeGroup.id IN :groupIds) " +
             "AND t.taskType = :type")
     long countMyTasksByType(
