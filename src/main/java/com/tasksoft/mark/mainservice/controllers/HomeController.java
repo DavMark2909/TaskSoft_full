@@ -33,7 +33,6 @@ public class HomeController {
         Long userId = securityUtils.getCurrentUserId();
         String role = securityUtils.getCurrentUserRole();
         SecurityUserDto dto = new SecurityUserDto(userName, userId, role);
-
         return ResponseEntity.ok(dto);
     }
 }
