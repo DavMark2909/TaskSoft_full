@@ -65,7 +65,7 @@ const CreateTask = () => {
                 description,
                 assignerId: userId,
                 assigneeId: isManager ? selectedUserId : userId,
-                type: SINGLE,
+                type: "SINGLE",
                 dueDate
             };
         } else {
@@ -74,10 +74,12 @@ const CreateTask = () => {
                 description,
                 assignerId: userId,
                 assigneeId: selectedGroupId,
-                type: GROUP,
+                type: "GROUP",
                 dueDate
             };
         }
+
+        console.log(payload)
 
 
         try {
