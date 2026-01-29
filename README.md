@@ -13,10 +13,10 @@ The system is built as a distributed ecosystem comprising four distinct services
 
 | Service | Technology Stack | Primary Responsibility |
 | :--- | :--- | :--- |
-| **Gateway Service** | Java, Spring Cloud Gateway | [cite_start]Acts as the single entry point (Edge Service), handling routing, CORS, and the Token Proxy handshake[cite: 99, 100, 101, 104]. |
-| **Authorization Server** | Java, Spring Security, MySQL | [cite_start]Functions as the Identity Provider, issuing signed JWTs and handling secure user registration[cite: 91, 92, 95, 137]. |
-| **Task Management** | Java, Spring Data JPA, PostgreSQL | [cite_start]Encapsulates core business logic for task creation, status updates, and database persistence[cite: 107, 108, 110]. |
-| **Frontend Client** | React.js | [cite_start]A Single Page Application (SPA) utilizing the Context API for state and hooks for non-blocking async logic[cite: 113, 114, 181, 183]. |
+| **Gateway Service** | Java, Spring Cloud Gateway | Acts as the single entry point (Edge Service), handling routing, CORS, and the Token Proxy handshake. |
+| **Authorization Server** | Java, Spring Security, MySQL | Functions as the Identity Provider, issuing signed JWTs and handling secure user registration. |
+| **Task Management** | Java, Spring Data JPA, PostgreSQL | Encapsulates core business logic for task creation, status updates, and database persistence. |
+| **Frontend Client** | React.js | A Single Page Application (SPA) utilizing the Context API for state and hooks for non-blocking async logic. |
 
 🔐 Security Implementation
 - The project utilizes the Token Proxy Pattern (Gateway-mediated security). 
