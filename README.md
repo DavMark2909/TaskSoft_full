@@ -6,3 +6,13 @@ TaskSoft is a full-stack, enterprise-grade task management solution designed to 
 - Centralized Security: Implements a custom OAuth2 Authorization Server to manage user identities and security protocols. 
 - Dual-Association Task Logic: Sophisticated data modeling that separates task creators (assigners) from executors (assignees). 
 - Collaborative Group Workflows: Support for many-to-many user-group memberships, allowing tasks to be assigned to functional teams (e.g., DevOps, Frontend).
+
+
+🛠 Technical Architecture
+The system is built as a distributed ecosystem comprising four distinct services to ensure independent scalability and maintainability.
+
+Service,Technology Stack,Primary Responsibility
+Gateway Service,"Java, Spring Cloud Gateway","Acts as the single entry point, handling routing, CORS, and the Token Proxy handshake. "
+Authorization Server,"Java, Spring Security",Issues signed JWTs and handles user registration and authentication. 
+Task Management,"Java, Spring Data JPA, PostgreSQL","Encapsulates core business logic for task creation, status updates, and persistence. "
+Frontend Client,React.js,A Single Page Application (SPA) utilizing the Context API for global state and non-blocking asynchronous logic. 
