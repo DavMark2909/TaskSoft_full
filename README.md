@@ -54,7 +54,7 @@ While standard users are restricted to self-assignment, Managers possess the aut
 
 
 
-<p align="center"> <img src="pictures/task.png" alt="Create Task" width="400px" /> <img src="path/to/group-management.png" alt="Group Management" width="400px" />
+<p align="center"> <img src="pictures/task.png" alt="Create Task" width="400px" /> <img src="pictures/team.png" alt="Group Management" width="400px" />
 
 
 <em><b>Figure 4:</b> Task Creation (left) and Group Management (right) interfaces for defining new functional teams and complex entity relationships.</em> </p>
