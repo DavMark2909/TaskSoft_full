@@ -16,3 +16,8 @@ Gateway Service,"Java, Spring Cloud Gateway","Acts as the single entry point, ha
 Authorization Server,"Java, Spring Security",Issues signed JWTs and handles user registration and authentication. 
 Task Management,"Java, Spring Data JPA, PostgreSQL","Encapsulates core business logic for task creation, status updates, and persistence. "
 Frontend Client,React.js,A Single Page Application (SPA) utilizing the Context API for global state and non-blocking asynchronous logic. 
+
+🔐 Security Implementation
+- The project utilizes the Token Proxy Pattern (Gateway-mediated security). 
+- Token Relay: The Gateway intercepts incoming session identifiers, retrieves the corresponding JWT, and propagates it to downstream services. 
+- Defense-in-Depth: While the Gateway blocks unauthenticated traffic, the Task Management service acts as an OAuth2 Resource Server, validating every JWT signature locally.
