@@ -45,7 +45,7 @@ Upon successful authentication, users are redirected to the User Dashboard. The 
 Role-Based Access Control (RBAC)
 A critical component of the frontend architecture is the implementation of RBAC within the navigation components. The sidebar utilizes conditional rendering based on the authorities present in the user’s security context.
 
-<p align="center"> <img src="pictures/sidebar.png" alt="RBAC Comparison" width="700px" />
+<p align="center"> <img src="pictures/sidebars.png" alt="RBAC Comparison" width="700px" />
 
 <em><b>Figure 3: RBAC in UI.</b> (a) Standard User View vs (b) Manager View. The application dynamically renders administrative options like "Create Group" exclusively for Managers to enforce least-privilege access.</em> </p>
 
