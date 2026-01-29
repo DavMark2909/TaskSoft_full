@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: main-service
+  config:
+    import: "optional:configserver:"
+  datasource:
+    username: user
+    password: psw
+    url: jdbc:postgresql://localhost:5432/tasksoft_db
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+#  sql:
+#    init:
+#      mode: always #tell spring to load the schema.sql file
+
+server:
+  port: 9001
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15s
+    threads:
+      max: 50
+      min-spare: 5
+
+
