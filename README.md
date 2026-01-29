@@ -1,0 +1,1 @@
+TaskSoft is a full-stack, enterprise-grade task management solution designed to optimize workforce efficiency through a microservices-based architecture. It replaces outdated coordination methods with a secure, scalable platform for task lifecycle management and role-based collaboration.
